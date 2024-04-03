@@ -14,19 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Set up AWS environment variables
         env:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        with:
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ATT9AepO2143cvVZ5qK3Cg8/Fltj9tUbiaIjLvEC
+          AWS_DEFAULT_REGION: us-east-1
 
       - name: List S3 buckets
-        run: aws s3 ls
-
-env:
-  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-
-
-      
+        run: |
+          aws s3 ls
