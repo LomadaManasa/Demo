@@ -25,5 +25,8 @@ jobs:
       - name: List S3 buckets
         run: aws s3 ls
 
+env:
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+
 
       
