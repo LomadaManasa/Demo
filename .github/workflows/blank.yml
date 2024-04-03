@@ -1,15 +1,28 @@
-name: Workflow Dispatch Example
+name: List S3 Buckets
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
-    name: Sample Build
+  list-s3-buckets:
+    name: List S3 Buckets
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Print Secret
-        env:
-          SUPER_SECRET: ${{ secrets.PASSWORD }}
-        run: echo "Secret value is $SUPER_SECRET"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: List S3 buckets
+        run: aws s3 ls
+
+
+      
