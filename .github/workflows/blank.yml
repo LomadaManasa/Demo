@@ -19,7 +19,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ATT9AepO2143cvVZ5qK3Cg8/Fltj9tUbiaIjLvEC
           AWS_DEFAULT_REGION: us-east-1
-
-      - name: List S3 buckets
         run: |
           aws s3 ls
