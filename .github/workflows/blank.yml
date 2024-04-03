@@ -6,6 +6,7 @@ jobs:
      runs-on: ubuntu-latest
      steps:
        - name: Write a multi-line message
+       - uses: actions/checkout@v2
          with: # Set the secret as an input
           super_secret: ${{ secrets.Password }}
          
