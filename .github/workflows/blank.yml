@@ -1,12 +1,15 @@
-on: [push]
+name: Workflow Dispatch Example
+
+on:
+  workflow_dispatch:
 
 jobs:
- build:
-     name: sample-build
-     runs-on: ubuntu-latest
-     steps:
-       - name: Write a multi-line message
-       - uses: actions/checkout@v2
-         with: # Set the secret as an input
-          super_secret: ${{ secrets.Password }}
-         
+  build:
+    name: Sample Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print Secret
+        env:
+          SUPER_SECRET: ${{ secrets.Password }}
+        run: echo "Secret value is $SUPER_SECRET"
