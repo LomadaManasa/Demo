@@ -11,5 +11,5 @@ jobs:
     steps:
       - name: Print Secret
         env:
-          SUPER_SECRET: ${{ secrets.Password }}
+          SUPER_SECRET: ${{ secrets.PASSWORD }}
         run: echo "Secret value is $SUPER_SECRET"
